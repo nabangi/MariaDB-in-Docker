@@ -1,6 +1,6 @@
 # MariaDB-in-Docker
 
-mariadb container db replication
+mariadb container master-slave replication
 
 #
 #Environment prep
