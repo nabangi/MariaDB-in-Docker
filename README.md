@@ -58,21 +58,21 @@ login with root  `$ mysql -u root -p `
 then
 `show master status;`
 
-#### To import:
+### To import:
 
 `docker exec -i adprcc3ms_mariadb-master_1 mysql -uroot -pmaster_root_password my_database < mariadb-master-dump.sql`
 
-#### To export:
+### To export:
 
 `docker exec -i adprcc3ms_mariadb-master_1 mysqldump -uroot -pmaster_root_password my_database > mariadb-master-dump.sql`
 
-###Stop and backup the currently running container, Uncomment the following lines
+#### Stop and backup the currently running container, Uncomment the following lines
 
 `docker stop $container_id`
 
 `rsync -a /opt/mariadb/master-data /opt/mariadb/master-data.bkp.$(date +%Y%m%d-%H.%M.%S)`
 
-###incase you want to scale up number of slaves
+#### incase you want to scale up number of slaves
 
 `docker-compose up --detach --scale mariadb-master=1 --scale mariadb-slave=3`
 
