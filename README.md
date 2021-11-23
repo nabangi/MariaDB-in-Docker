@@ -2,11 +2,10 @@
 
 mariadb container master-slave replication
 
-#
-#Environment prep
-#
 
-sudo apt update
+##Environment prep
+
+`sudo apt update`
 
 #
 #Installing the Docker engine incase its not installed yet
