@@ -7,111 +7,88 @@ mariadb container master-slave replication
 
 `sudo apt update`
 
-#
-#Installing the Docker engine incase its not installed yet
-#
+### Installing the Docker engine incase its not installed yet
 
-sudo apt-get remove docker docker-engine docker.io
+`sudo apt-get remove docker docker-engine docker.io`
 
-sudo apt install docker.io
+`sudo apt install docker.io`
 
-sudo systemctl start docker
+`sudo systemctl start docker`
 
-sudo systemctl enable docker
+`sudo systemctl enable docker`
 
-#
-#logout then login again to enable user rights incase they don't apply immediately
-#
+### logout then login again to enable user rights incase they don't apply immediately
 
-sudo groupadd docker
+`sudo groupadd docker`
 
-sudo gpasswd -a "${USER}" docker
+`sudo gpasswd -a "${USER}" docker`
 
-usermod -aG docker "${USER}"
+`usermod -aG docker "${USER}"`
 
-#
-#Create the database persistent volume to be mounted
-#
+### Create the database persistent volume to be mounted
 
-mkdir -p /opt/mariadb/master-data
+`mkdir -p /opt/mariadb/master-data`
 
-#
-#Grant Permission 
-#
+#### Grant Permission 
 
-sudo chown -R 1001:1001 /opt/mariadb/master-data/
+`sudo chown -R 1001:1001 /opt/mariadb/master-data/`
 
-docker run -d or docker-compose up -d is running containers in dettached mode but when you remove the "-d" it could help with debugging the running configs in the container!
+`docker run -d or docker-compose up -d` is running containers in dettached mode but when you remove the "-d" it could help with debugging the running configs in the container!
 
-#To login to a container
+#### To login to a container
 
-docker exec -it $container_id bash
+`docker exec -it $container_id bash`
 
-#mariadb
+## mariadb
 
-$ mysql -u my_user -p 
+`$ mysql -u my_user -p`
 > my_password
 
-#after login check databases
-> show databases;
-> use my_databse;
+#### after login check databases
+`show databases;`
+`use my_databse;`
 
-#then create table form there
->
-> exit;
+#### then create table form there
+`exit;`
 
-#check or configure replication
-login with root  $ mysql -u root -p 
->master_root_password
+#### check or configure replication
+login with root  `$ mysql -u root -p `
+> master_root_password
 
 then
->show master status;
+`show master status;`
 
-#
-#To import:
-#
+#### To import:
 
-docker exec -i adprcc3ms_mariadb-master_1 mysql -uroot -pmaster_root_password my_database < mariadb-master-dump.sql
+`docker exec -i adprcc3ms_mariadb-master_1 mysql -uroot -pmaster_root_password my_database < mariadb-master-dump.sql`
 
-#
-#To export:
-#
+#### To export:
 
-docker exec -i adprcc3ms_mariadb-master_1 mysqldump -uroot -pmaster_root_password my_database > mariadb-master-dump.sql
+`docker exec -i adprcc3ms_mariadb-master_1 mysqldump -uroot -pmaster_root_password my_database > mariadb-master-dump.sql`
 
-#
-#Stop and backup the currently running container, Uncomment the following lines
-#
+###Stop and backup the currently running container, Uncomment the following lines
 
-docker stop $container_id
+`docker stop $container_id`
 
-rsync -a /opt/mariadb/master-data /opt/mariadb/master-data.bkp.$(date +%Y%m%d-%H.%M.%S)
+`rsync -a /opt/mariadb/master-data /opt/mariadb/master-data.bkp.$(date +%Y%m%d-%H.%M.%S)`
 
-#
-#incase you want to scale up number of slaves
-#
+###incase you want to scale up number of slaves
 
-docker-compose up --detach --scale mariadb-master=1 --scale mariadb-slave=3
+`docker-compose up --detach --scale mariadb-master=1 --scale mariadb-slave=3`
 
-#
-#To cleanUP 
-#
+## To clean up
 
-docker stop $container_id
+`docker stop $container_id`
 
-docker rm $container_id
+`docker rm $container_id`
 
-#
-#You can also remove all images and stopped contaners using
-#
+### You can also remove all images and stopped contaners using
 
-docker prune -a
+`docker prune -a`
 
-#
-#Run the following to see if the cronjob you've defined actually runs.
-#
+## Run the following to see if the cronjob you've defined actually runs.
 
-sudo grep CRON /var/log/syslog
+`sudo grep CRON /var/log/syslog`
 
 
-VOILAA...!!!
+# VOILAA...!!!
