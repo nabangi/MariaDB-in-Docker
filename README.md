@@ -6,7 +6,7 @@ mariadb container master-slave replication with health Monitoring
 
 Running the `deploy_config.sh` after clonning the Repo to you Server.
 
-## Environment prep
+## Environment prep and manually deploy
 
 `sudo apt update`
 
