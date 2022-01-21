@@ -32,7 +32,7 @@ Running the `deploy_config.sh` after clonning the Repo to you Server.
 
 `mkdir -p /opt/mariadb/master-data`
 
-#### Grant Permission 
+#### Grant Permissions 
 
 `sudo chown -R 1001:1001 /opt/mariadb/master-data/`
 
@@ -75,7 +75,7 @@ then
 
 `rsync -a /opt/mariadb/master-data /opt/mariadb/master-data.bkp.$(date +%Y%m%d-%H.%M.%S)`
 
-#### incase you want to scale up number of slaves
+#### incase you want to scale up number of slaves or scale down
 
 `docker-compose up --detach --scale mariadb-master=1 --scale mariadb-slave=3`
 
