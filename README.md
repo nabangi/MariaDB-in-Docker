@@ -8,7 +8,7 @@ Running the `deploy_config.sh` after clonning the Repo to you Server.
 
 ## Environment prep and manually deploy
 
-  `sudo apt update`
+    `sudo apt update`
 
 ### Installing the Docker engine incase its not installed yet
 
