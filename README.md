@@ -12,21 +12,21 @@ Running the `deploy_config.sh` after clonning the Repo to you Server.
 
 ### Installing the Docker engine incase its not installed yet
 
-  `sudo apt-get remove docker docker-engine docker.io`
+    `sudo apt-get remove docker docker-engine docker.io`
 
-  `sudo apt install docker.io`
+     `sudo apt install docker.io`
 
-  `sudo systemctl start docker`
+    `sudo systemctl start docker`
 
-  `sudo systemctl enable docker`
+    `sudo systemctl enable docker`
 
 ### logout then login again to enable user rights incase they don't apply immediately
 
-  `sudo groupadd docker`
+     `sudo groupadd docker`
 
-  `sudo gpasswd -a "${USER}" docker`
+    `sudo gpasswd -a "${USER}" docker`
 
-  `usermod -aG docker "${USER}"`
+      `usermod -aG docker "${USER}"`
 
 ### Create the database persistent volume to be mounted
 
