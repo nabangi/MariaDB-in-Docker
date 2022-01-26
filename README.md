@@ -57,9 +57,10 @@ Running containers in dettached mode but when you remove the "-d" it could help 
     `exit;`
 
 #### check or configure replication
-login with root  
-    `$ mysql -u root -p `
-    #master_root_password
+login with root 
+
+    `$ mysql -u root -p`
+      #master_root_password
 
 then
 
