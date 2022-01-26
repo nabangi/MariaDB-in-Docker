@@ -46,24 +46,24 @@ Running containers in dettached mode but when you remove the "-d" it could help 
 
 ## mariadb
 
-  `$ mysql -u my_user -p`
-  > my_password
+     `$ mysql -u my_user -p`
+     > my_password
 
 #### after login check databases
-  `show databases;`
-  `use my_databse;`
+    `show databases;`
+    `use my_databse;`
 
 #### then create table form there
-  `exit;`
+    `exit;`
 
 #### check or configure replication
 login with root  
-  `$ mysql -u root -p `
-  > master_root_password
+    `$ mysql -u root -p `
+     > master_root_password
 
 then
 
-  `show master status;`
+   `show master status;`
 
 ### To import:
 
