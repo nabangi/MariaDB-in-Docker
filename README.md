@@ -46,8 +46,8 @@ Running containers in dettached mode but when you remove the "-d" it could help 
 
 ## mariadb
 
-     `$ mysql -u my_user -p`
-     > my_password
+    `$ mysql -u my_user -p`
+      #my_password
 
 #### after login check databases
     `show databases;`
@@ -59,43 +59,43 @@ Running containers in dettached mode but when you remove the "-d" it could help 
 #### check or configure replication
 login with root  
     `$ mysql -u root -p `
-     > master_root_password
+    #master_root_password
 
 then
 
-   `show master status;`
+    `show master status;`
 
 ### To import:
 
-  `docker exec -i adprcc3ms_mariadb-master_1 mysql -uroot -pmaster_root_password my_database < mariadb-master-dump.sql`
+    `docker exec -i adprcc3ms_mariadb-master_1 mysql -uroot -pmaster_root_password my_database < mariadb-master-dump.sql`
 
 ### To export:
 
-  `docker exec -i adprcc3ms_mariadb-master_1 mysqldump -uroot -pmaster_root_password my_database > mariadb-master-dump.sql`
+    `docker exec -i adprcc3ms_mariadb-master_1 mysqldump -uroot -pmaster_root_password my_database > mariadb-master-dump.sql`
 
 #### Stop and backup the currently running container, Uncomment the following lines
 
-  `docker stop $container_id`
+    `docker stop $container_id`
 
-  `rsync -a /opt/mariadb/master-data /opt/mariadb/master-data.bkp.$(date +%Y%m%d-%H.%M.%S)`
+    `rsync -a /opt/mariadb/master-data /opt/mariadb/master-data.bkp.$(date +%Y%m%d-%H.%M.%S)`
 
 #### incase you want to scale up number of slaves or scale down
 
-  `docker-compose up --detach --scale mariadb-master=1 --scale mariadb-slave=3`
+    `docker-compose up --detach --scale mariadb-master=1 --scale mariadb-slave=3`
 
 ## To clean up
 
-`docker stop $container_id`
+    `docker stop $container_id`
 
-`docker rm $container_id`
+    `docker rm $container_id`
 
 ### You can also remove all images and stopped contaners using
 
-`docker prune -a`
+    `docker prune -a`
 
 ## Run the following to see if the cronjob you've defined actually runs.
 
-`sudo grep CRON /var/log/syslog`
+    `sudo grep CRON /var/log/syslog`
 
 
 # VOILAA...!!!
