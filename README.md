@@ -86,17 +86,17 @@ then
 
 ## To clean up
 
-    `docker stop $container_id`
+    docker stop $container_id
 
-    `docker rm $container_id`
+    docker rm $container_id
 
 ### You can also remove all images and stopped contaners using
 
-    `docker prune -a`
+    docker prune -a
 
 ## Run the following to see if the cronjob you've defined actually runs.
 
-    `sudo grep CRON /var/log/syslog`
+    sudo grep CRON /var/log/syslog
 
 
 # VOILAA...!!!
