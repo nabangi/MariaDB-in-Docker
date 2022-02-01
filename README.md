@@ -22,27 +22,27 @@ Running the `deploy_config.sh` after clonning the Repo to you Server.
 
 ### logout then login again to enable user rights incase they don't apply immediately
 
-    `sudo groupadd docker`
+    sudo groupadd docker
 
-    `sudo gpasswd -a "${USER}" docker`
+    sudo gpasswd -a "${USER}" docker
 
-    `usermod -aG docker "${USER}"`
+    usermod -aG docker "${USER}"
 
 ### Create the database persistent volume to be mounted
 
-    `mkdir -p /opt/mariadb/master-data`
+    mkdir -p /opt/mariadb/master-data
 
 #### Grant Permissions 
 
-    `sudo chown -R 1001:1001 /opt/mariadb/master-data/`
+    sudo chown -R 1001:1001 /opt/mariadb/master-data/
 
 Running containers in dettached mode but when you remove the "-d" it could help with debugging the running configs in the container!
 
-    `docker run -d or docker-compose up -d` 
+    docker run -d or docker-compose up -d 
 
 #### To login to a container
 
-    `docker exec -it $container_id bash`
+    docker exec -it $container_id bash
 
 ## mariadb
 
